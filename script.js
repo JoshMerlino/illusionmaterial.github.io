@@ -1,5 +1,5 @@
 Material.init({
-	selectionColor:"pink:100"
+	
 })
 
 var homeURL = "file:///C:/Users/joshu/Desktop/IllusionMaterial.com/index.html"
@@ -31,11 +31,30 @@ $(function(){
 		if(href){
 			window.location.href = href
 		}
+		
+		var h = window.location.href.split("#")[1] + ".html"
+		$("iframe.content").attr("src", h)
+	
 	})
 	$(".banner.left").click(function(e){
 		e.stopPropagation();
 	})
 	$(".banner.left .title").click(function(){
 		window.location.href = homeURL
+	})
+	$("iframe.content").each(function(){
+		
+		var h = window.location.href.split("#")[1] + ".html"
+		$(this).attr("src", h)
+	}).mouseover(function(){
+		$(".banner.left").animate({
+			left:"-" + $(this).width() + "px"
+		}, 350).fadeOut(200)
+	})
+	$(".pagetop").click(function(){
+		var w = window.open("mailto:illusionmaterial@gmail.com?subject=Material Bugs&body=Please state the version number your using and in detail, describe the issue.");
+		setTimeout(function(){
+			w.close()
+		},100);
 	})
 })
